@@ -22,14 +22,21 @@ namespace Carousel_Monkey
                 {
                     Children =
                     {
+                        new Image
+                        {
+                            HeightRequest = 430,
+                            WidthRequest = 400,
+                            HorizontalOptions = LayoutOptions.Center,
+                            Aspect = Aspect.AspectFill,
+                            Source = "monkeys.jpg",
+                        },
                         new Label
                         {
-                            Text = "Swipe to the right --->",
-                            FontSize = 35,
-                            TextColor = Color.Black,
-                            FontAttributes = FontAttributes.Bold,
-                            HorizontalOptions = LayoutOptions.Center,
-                            VerticalOptions = LayoutOptions.Center,
+                            Text = "What exactly is an African monkey? Is it different from an ape, or a primate?",
+                        },
+                        new Label
+                        {
+                            Text = "A primate is an animal belonging to the biological order ‘Primates’, a group that contains all species of lemurs, monkeys, and apes worldwide.",
                         }
                     }
                 }
@@ -37,6 +44,8 @@ namespace Carousel_Monkey
             ContentPage MainInfo(ContentPage mainPage, string monkeyName, string imagePath, string mainContent)
             {
                 Image img;
+                Button btn;
+                StackLayout stackLayout;
                 img = new Image
                 {
                     HeightRequest = 170,
@@ -48,8 +57,10 @@ namespace Carousel_Monkey
                 var tap = new TapGestureRecognizer();
                 tap.Tapped += Tap_Tapped; ;
                 img.GestureRecognizers.Add(tap);
+               
                 mainPage = new ContentPage()
                 {
+
                     Content = new Frame
                     {
                         CornerRadius = 5,
@@ -61,7 +72,6 @@ namespace Carousel_Monkey
 
                         Content = new StackLayout
                         {
-
                             Children =
                             {
                                 new Label
@@ -87,7 +97,7 @@ namespace Carousel_Monkey
                                     MaxLines = 5,
                                     LineBreakMode = LineBreakMode.TailTruncation,
                                 },
-                            }
+                            },
                         }
                     }
                 };
@@ -100,7 +110,6 @@ namespace Carousel_Monkey
             Children.Add(MainInfo(page2, "Lorisoidea monkey", "Greater_Galago.jpg", "Lorisoidea is a superfamily of nocturnal primates found throughout Africa and Asia. Members include the galagos and the lorisids."));
             Children.Add(MainInfo(page3, "Cheirogaleidae monkey", "Rode.jpg", "The Cheirogaleidae are the family of strepsirrhine primates containing the various dwarf and mouse lemurs. Like all other lemurs, cheirogaleids live exclusively on the island of Madagascar."));
             Children.Add(MainInfo(page4, "Indriidae monkey", "Indri.jpg", "The Indriidae (sometimes incorrectly spelled Indridae) are a family of strepsirrhine primates. They are medium- to large-sized lemurs, with only four teeth in the toothcomb instead of the usual six. Indriids, like all lemurs, live exclusively on the island of Madagascar."));
-
         }
 
         private async void Tap_Tapped(object sender, EventArgs e)
